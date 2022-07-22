@@ -1,7 +1,0 @@
-const peliculasURL = "https://nohaywebs.com/esm/peliculas-populares.json"
-const configuracionURL = "https://nohaywebs.com/esm/configuration.json"
-
-async function obtenerDatos(){
-
-}
-obtenerDatos();
