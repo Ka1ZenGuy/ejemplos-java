@@ -43,3 +43,6 @@ async function obtenerDatos() {
 
 }
 obtenerDatos();
+
+let textoBuscado = document.getElementById("barra-busqueda").value;
+    console.log(textoBuscado);
