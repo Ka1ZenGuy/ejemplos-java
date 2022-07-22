@@ -15,23 +15,31 @@ obtenerDatos();
 
 console.log(obtenerDatos)*/
 
-async function fetchJSON(URL){
+async function fetchJSON(URL) {
     const respuesta = await fetch(URL);
     const datos = await respuesta.json();
     return datos;
 }
 
-async function obtenerDatos(){
+async function obtenerDatos() {
     const peliculas = await fetchJSON(peliculasURL);
     const configuracion = await fetchJSON(configuracionURL);
+
     const baseURL = configuracion.images.base_url;
-    const posterSize = configuracion.images.poster_sizes[5];
-    const poster = peliculas.results[3].poster_path; 
+    const posterSize = configuracion.images.poster_sizes[3];
 
-    console.log(baseURL + posterSize + poster);
 
-    console.log(configuracion.images.base_url);
-    console.log(configuracion.images.poster_sizes[0]);
+   
+
+    document.getElementById("contenedor").innerHTML =
+        peliculas.results.map(
+            pelicula =>
+                `<div class="ficha-pelicula">
+<img src="${baseURL + posterSize + pelicula.poster_path}" alt="">
+<h2>${pelicula.title}</h2>
+<p>${pelicula.overview}</p>
+</div>`
+        ).join("\n");
+
 }
-
 obtenerDatos();
